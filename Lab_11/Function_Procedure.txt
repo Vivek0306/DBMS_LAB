@@ -1,0 +1,34 @@
+syntax for function
+
+FUNCTION DEFINITION
+create or replace function f(r number)
+return number is
+	t number;
+	i student%rowtype;
+	
+	begin
+	select p,c,m into i.p,i.c.i.m from student where rollno=r;
+	t := i.p + i.c + i.m;
+	return t;
+	end;
+
+
+FUNCTION CALL
+declare
+r number;
+t number;
+begin
+	r := &r;
+	t := f(r);
+	print t;\
+
+
+PROCEDURE
+identical to function but then the variables to be inputted must be referred to as
+(r in number) and the variables to outputted has to be referred to as (r out number)
+
+Execute the procedure using ----> exec proc_name(param);
+
+
+select f(1) from dual; ------> check whether the function works
+show error; -----> to show the error in the function
